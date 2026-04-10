@@ -163,10 +163,14 @@ def get_progress_data():
     if config.get("include_new_cards", True):
         new_cards_mode = config.get("new_cards_mode", "goal")
         if new_cards_mode == "scheduler":
-            # Count the same way as learning/review: done from revlog, remaining from scheduler
+            # Count the same way as learning/review: done from revlog, remaining from deck tree
             new_done = new_cards_today
             try:
-                new_remaining = mw.col.sched.newCount
+                # deck_due_tree() returns the full collection tree — each top-level child's
+                # new_count already rolls up its sub-decks, so summing them gives the
+                # collection-wide total without being scoped to the currently selected deck
+                tree = mw.col.sched.deck_due_tree()
+                new_remaining = sum(child.new_count for child in tree.children)
             except Exception:
                 new_remaining = 0
         else:
