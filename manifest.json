@@ -1,0 +1,11 @@
+{
+    "name": "Custom Progress Bar",
+    "package": "custom_progress_bar",
+    "author": "Custom",
+    "version": "1.5.0",
+    "description": "A customizable progress bar for Anki with beautiful gradients, glass effects, theme presets, and card rescheduling. Features traffic-light gradients, frosted glass styling, dark mode support, real-time progress tracking, and one-click card postponing/advancing.",
+    "homepage": "",
+    "min_point_version": 50,
+    "max_point_version": 0,
+    "conflicts": []
+}
