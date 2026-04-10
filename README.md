@@ -63,13 +63,16 @@ Save rules to automatically unsuspend a set number of cards each session. Open v
 
 ## Installation
 
-1. Download and copy the `ProgressBar` folder into your Anki add-ons directory:
+**Via AnkiWeb:** Search for "Progress Bar Batch Unsuspend" or install directly *(AnkiWeb link coming after submission)*.
+
+**Manual:**
+1. Download this repo and copy the `ProgressBar` folder into your Anki add-ons directory:
    - **Mac:** `~/Library/Application Support/Anki2/addons21/`
    - **Windows:** `%APPDATA%\Anki2\addons21\`
    - **Linux:** `~/.local/share/Anki2/addons21/`
 2. Restart Anki
 
-Or install directly from AnkiWeb *(link coming)*.
+Requires **Anki 23.10 or later**.
 
 ---
 

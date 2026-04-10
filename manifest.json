@@ -1,11 +1,11 @@
 {
     "name": "Progress Bar + Batch Unsuspend & Card Delay",
     "package": "custom_progress_bar",
-    "author": "Custom",
+    "author": "BTellinghusen",
     "version": "1.6.0",
     "description": "A customizable progress bar that tracks your daily reviews in real time, plus tools to batch unsuspend cards by tag and deck, and delay overdue cards by deck.",
-    "homepage": "",
-    "min_point_version": 50,
+    "homepage": "https://github.com/BTellinghusen/anki-progress-bar",
+    "min_point_version": 231000,
     "max_point_version": 0,
     "conflicts": []
 }
