@@ -4,6 +4,18 @@ A customizable progress tracker plus tools to batch unsuspend cards by tag/deck 
 
 ---
 
+## Screenshots
+
+| Bar mode | Circle mode |
+|---|---|
+| ![Bar mode](assets/bar-mode.png) | ![Circle mode](assets/circle-mode.png) |
+
+| Card Delay | Batch Unsuspend |
+|---|---|
+| ![Card Delay](assets/card-delay.png) | ![Batch Unsuspend](assets/batch-unsuspend.png) |
+
+---
+
 ## What it shows
 
 - A progress bar or circle that fills as you complete cards

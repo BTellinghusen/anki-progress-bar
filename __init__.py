@@ -385,10 +385,10 @@ def get_bar_html(percentage, data, config):
             height: 12px;
             cursor: pointer;
             opacity: 0.6;
-            transition: opacity 0.2s, transform 0.2s;
+            transition: opacity 0.2s;
             z-index: 2;
             pointer-events: auto;
-        " onmouseover="this.style.opacity='1'; this.style.transform='rotate(90deg)'" onmouseout="this.style.opacity='0.6'; this.style.transform='rotate(0deg)'">
+        " onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="{text_color}">
                 <!-- Gear/Settings Icon -->
                 <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
@@ -618,10 +618,10 @@ def get_circle_html(percentage, data, config):
                 height: 12px;
                 cursor: pointer;
                 opacity: 0.6;
-                transition: opacity 0.2s, transform 0.2s;
+                transition: opacity 0.2s;
                 z-index: 100;
                 pointer-events: auto;
-            " onmouseover="this.style.opacity='1'; this.style.transform='rotate(90deg)'" onmouseout="this.style.opacity='0.6'; this.style.transform='rotate(0deg)'">
+            " onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">
                 <svg width="12" height="12" viewBox="0 0 16 16" fill="{text_color}">
                     <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
                     <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319z"/>
