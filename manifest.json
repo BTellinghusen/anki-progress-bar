@@ -1,9 +1,9 @@
 {
-    "name": "Custom Progress Bar",
+    "name": "Progress Bar + Batch Unsuspend & Card Delay",
     "package": "custom_progress_bar",
     "author": "Custom",
-    "version": "1.5.0",
-    "description": "A customizable progress bar for Anki with beautiful gradients, glass effects, theme presets, and card rescheduling. Features traffic-light gradients, frosted glass styling, dark mode support, real-time progress tracking, and one-click card postponing/advancing.",
+    "version": "1.6.0",
+    "description": "A customizable progress bar that tracks your daily reviews in real time, plus tools to batch unsuspend cards by tag and deck, and delay overdue cards by deck.",
     "homepage": "",
     "min_point_version": 50,
     "max_point_version": 0,

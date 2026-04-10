@@ -1,6 +1,6 @@
-# Anki Progress Bar
+# Progress Bar + Batch Unsuspend & Card Delay
 
-A customizable progress tracker that sits on your screen while you review, showing how far through your day you are.
+A customizable progress tracker plus tools to batch unsuspend cards by tag/deck and delay overdue cards — all in one add-on.
 
 ---
 
