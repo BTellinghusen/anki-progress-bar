@@ -1,105 +1,66 @@
 # Anki Progress Bar
 
-A fully customizable progress bar for Anki that tracks your daily review session in real time. Displays new, learning, and review card counts with beautiful themes, gradients, and glass effects — plus a built-in batch unsuspend system.
+A customizable progress tracker that sits on your screen while you review, showing how far through your day you are.
 
 ---
 
-## Features
+## What it shows
 
-### Progress Display
-- **Bar or circle style** — choose your layout
-- **Real-time updates** after every card answer
-- **Live counts** for New, Learn, and Review cards remaining
-- **Done/total and percentage** display
-- **Position** — top-left, top-right, bottom-left, or bottom-right
-
-### Themes & Styling
-- Built-in themes: Light, Dark, Pink, Blue, Green, Purple, Orange
-- Custom color picker for bar fill and background
-- **Traffic light gradient** — bar shifts red → orange → yellow → green as you progress
-- **Frosted glass effect** — blurred, translucent overlay with adjustable opacity and blur
-- Adjustable text size and brightness
-
-### New Card Tracking (two modes)
-- **Goal-based** — counts toward a manually set daily goal (e.g. 20 new cards). Resets at end of day.
-- **Scheduler mode** — counts new cards the same way as learning and review cards: done from today's revlog, remaining from Anki's scheduler. No goal to maintain.
-
-### Card Count Accuracy
-- Learning cards done pulled from revlog (`type 0` learn steps + `type 2` relearn steps)
-- Review cards done pulled from revlog (`type 1`)
-- New cards introduced today counted from revlog (cards whose first-ever review entry was today)
-- Remaining counts queried fresh from the database after every card — no stale scheduler state
-
-### Batch Unsuspend
-Create saved rules to unsuspend a set number of suspended cards each session.
-
-**Rule builder:**
-- **Multiple tags per rule** — AND logic (card must have all selected tags)
-- **Multiple decks per rule** — OR logic (card can be in any selected deck)
-- **Hierarchical deck browser** — top-level parents shown by default; click `▶` to drill into sub-decks; `← Back` to go up
-- **Debounced search** — 300ms delay, all filtering done in-memory (no DB hit per keystroke)
-- **`&` multi-term search** — type `neuro & pharm` to filter results matching both terms
-- **Double-click to add** tags or decks to the rule; click selected items to remove
-- **Active/inactive toggle** per rule
-- **Total counter** at the bottom — sum of cards across all active rules, updates live when you toggle rules
+- A progress bar or circle that fills as you complete cards
+- Live counts for **New**, **Learn**, and **Review** cards remaining
+- Done/total number and percentage
+- Updates automatically after every card
 
 ---
 
-## Installation
+## Customization
 
-### From AnkiWeb
-*(Screenshots coming — add-on page link will be here)*
-
-### Manual
-1. Download or clone this repo
-2. Copy the `ProgressBar` folder into your Anki add-ons directory:
-   - **macOS:** `~/Library/Application Support/Anki2/addons21/`
-   - **Windows:** `%APPDATA%\Anki2\addons21\`
-   - **Linux:** `~/.local/share/Anki2/addons21/`
-3. Restart Anki
+- **Style** — bar or circle
+- **Position** — any corner of the screen
+- **Themes** — Light, Dark, Pink, Blue, Green, Purple, Orange, or fully custom colors
+- **Gradient** — solid color, fade, or traffic light (red → green as you progress)
+- **Glass effect** — frosted blur overlay with adjustable opacity
 
 ---
 
-## Configuration
+## New card tracking
 
-Open via **Tools → Progress Bar Settings** or click the progress bar itself.
+Two modes, switchable in settings:
 
-| Setting | Description |
-|---|---|
-| Style | Bar or circle |
-| Position | Corner of screen |
-| Theme | Preset color scheme |
-| Gradient | Solid, fade, or traffic-light |
-| Glass effect | Frosted blur overlay |
-| New card mode | Goal-based or scheduler |
-| Daily new goal | Target if using goal mode |
-| Display location | Main screen, deck overview, during review |
+- **Goal-based** — counts toward a number you set (e.g. 20 new cards/day). Resets at end of day.
+- **Scheduler** — tracks new cards the same way as learning and review cards. No goal to set.
 
 ---
 
 ## Batch Unsuspend
 
-Open via **Tools → Reschedule / Unsuspend Cards → Batch Unsuspend tab**.
+Save rules to automatically unsuspend a set number of cards each session. Open via **Tools → Reschedule / Unsuspend Cards → Batch Unsuspend**.
 
-1. Click **Add Rule**
-2. Name the rule
-3. Search for tags (double-click to add; use `&` for AND)
-4. Browse or search for decks (double-click to add; `▶` to expand parent decks)
-5. Set the number of cards to unsuspend
-6. Click **Save**
-7. Enable/disable rules with the checkbox — the **total counter** updates live
-8. Click **Unsuspend Selected** to run all active rules
+**Setting up a rule:**
+1. Click **Add Rule** and give it a name
+2. Search for tags to filter by — double-click to add, click to remove. Use `&` to match multiple terms (e.g. `neuro & pharm`)
+3. Browse decks by drilling into parent decks with `▶`, or search. Double-click to add.
+4. Set how many cards to unsuspend
+5. Save
 
----
-
-## Compatibility
-
-- Anki 23.10+ (tested on 25.x)
-- Python 3.10+
-- macOS, Windows, Linux
+**Running unsuspends:**
+- Toggle rules on/off with the checkbox — the **total card count** at the bottom updates live
+- Click **Unsuspend Selected** to run all active rules
 
 ---
 
-## License
+## Installation
 
-MIT
+1. Download and copy the `ProgressBar` folder into your Anki add-ons directory:
+   - **Mac:** `~/Library/Application Support/Anki2/addons21/`
+   - **Windows:** `%APPDATA%\Anki2\addons21\`
+   - **Linux:** `~/.local/share/Anki2/addons21/`
+2. Restart Anki
+
+Or install directly from AnkiWeb *(link coming)*.
+
+---
+
+## Settings
+
+Open via **Tools → Progress Bar Settings** or click the bar itself.
