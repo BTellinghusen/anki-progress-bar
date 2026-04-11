@@ -53,7 +53,8 @@ Save rules to automatically unsuspend a set number of cards each session. Open v
 2. Search for tags to filter by — double-click to add, click to remove. Use `&` to match multiple terms (e.g. `neuro & pharm`)
 3. Browse decks by drilling into parent decks with `▶`, or search. Double-click to add.
 4. Set how many cards to unsuspend
-5. Save
+5. Optionally check **Only unsuspend one card per note** — prevents sibling cards from being unsuspended in the same batch. Still hits your full card count target, just from different notes.
+6. Save
 
 **Running unsuspends:**
 - Toggle rules on/off with the checkbox — the **total card count** at the bottom updates live

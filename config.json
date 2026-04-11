@@ -11,6 +11,7 @@
     "enabled": true,
     "selected_decks": [],
     "include_new_cards": true,
+    "new_cards_mode": "goal",
     "new_cards_goal": 20,
     "show_percentage": true,
     "show_numbers": true,

@@ -143,18 +143,11 @@ def get_progress_data():
     """)
     new_cards_today = new_today_result[0] or 0
 
-    # Remaining from SQL (fresh DB query, not stale scheduler state)
+    # Remaining from deck_due_tree — respects daily limits, buried cards, etc.
     try:
-        today = mw.col.sched.today
-        dayCutoff = mw.col.sched.dayCutoff
-        remaining_result = mw.col.db.first(f"""
-            SELECT
-                COUNT(DISTINCT CASE WHEN (queue = 1 AND due < {dayCutoff}) OR (queue = 3 AND due <= {today}) THEN id END),
-                COUNT(DISTINCT CASE WHEN queue = 2 AND due <= {today} THEN id END)
-            FROM cards WHERE queue >= 0
-        """)
-        learning_remaining = remaining_result[0] or 0
-        review_remaining = remaining_result[1] or 0
+        tree = mw.col.sched.deck_due_tree()
+        learning_remaining = sum(child.learn_count for child in tree.children)
+        review_remaining = sum(child.review_count for child in tree.children)
     except Exception:
         learning_remaining = 0
         review_remaining = 0
@@ -1382,6 +1375,11 @@ class RescheduleDialog(QDialog):
         cards_layout.addWidget(cards_spin)
         layout.addLayout(cards_layout)
 
+        # One per note
+        one_per_note_check = QCheckBox("Only unsuspend one card per note (no siblings in same batch)")
+        one_per_note_check.setChecked(rule_data.get("one_per_note", False))
+        layout.addWidget(one_per_note_check)
+
         # Buttons
         btn_layout = QHBoxLayout()
         save_btn = QPushButton("Save")
@@ -1417,6 +1415,7 @@ class RescheduleDialog(QDialog):
                 "tags": tags,
                 "decks": decks,
                 "cards_count": cards_spin.value(),
+                "one_per_note": one_per_note_check.isChecked(),
                 "active": rule_data.get("active", True),
             }
             save_config(cfg)
@@ -1484,7 +1483,21 @@ class RescheduleDialog(QDialog):
             # Find suspended cards matching criteria
             card_ids = mw.col.findCards(search_query)
             card_ids.sort()  # Sort by creation date
-            
+
+            # If one_per_note, filter to at most one card per note
+            if rule_data.get("one_per_note", False) and card_ids:
+                cid_to_nid = dict(mw.col.db.execute(
+                    f"SELECT id, nid FROM cards WHERE id IN ({','.join(str(c) for c in card_ids)})"
+                ))
+                seen_nids = set()
+                filtered = []
+                for cid in card_ids:
+                    nid = cid_to_nid.get(cid)
+                    if nid not in seen_nids:
+                        seen_nids.add(nid)
+                        filtered.append(cid)
+                card_ids = filtered
+
             n_available = len(card_ids)
             
             if n_available == 0:
