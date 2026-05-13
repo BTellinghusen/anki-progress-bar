@@ -152,11 +152,14 @@ def get_progress_data():
         learning_remaining = 0
         review_remaining = 0
 
-    # New cards: goal-based or scheduler-based
+    # New cards: goal-based or scheduler-based.
+    # new_done is display-only and is NOT added to total_done — every new card
+    # answered today already has a type=0 (learning) entry in revlog, which is
+    # counted in learning_done. Adding new_done would double-count and inflate
+    # the total beyond what Anki's stats screen reports.
     if config.get("include_new_cards", True):
         new_cards_mode = config.get("new_cards_mode", "goal")
         if new_cards_mode == "scheduler":
-            # Count the same way as learning/review: done from revlog, remaining from deck tree
             new_done = new_cards_today
             try:
                 # deck_due_tree() returns the full collection tree — each top-level child's
@@ -167,7 +170,6 @@ def get_progress_data():
             except Exception:
                 new_remaining = 0
         else:
-            # Goal-based: count toward a fixed daily target
             new_cards_goal = config.get("new_cards_goal", 20)
             new_done = min(new_cards_today, new_cards_goal)
             new_remaining = max(0, new_cards_goal - new_cards_today)
@@ -175,7 +177,7 @@ def get_progress_data():
         new_done = 0
         new_remaining = 0
 
-    total_done = new_done + review_done + learning_done
+    total_done = review_done + learning_done
     total_remaining = new_remaining + learning_remaining + review_remaining
 
     return {
